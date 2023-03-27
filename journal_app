@@ -9,10 +9,10 @@ class JournalDatabase:
                                      user="postgres",
                                      password="yourpassword")
 
-    def insert_entry(self, title, dreams, thoughts, positive, one_thing):
+    def insert_entry(self, dreams, thoughts, positive, one_thing):
         cur = self.conn.cursor()
-        cur.execute("INSERT INTO entries (title, dreams, thoughts, positive, one_thing, created_at) VALUES (%s, %s, %s, %s, %s, %s)",
-                    (title, dreams, thoughts, positive, one_thing, datetime.now()))
+        cur.execute("INSERT INTO entries (dreams, thoughts, positive, one_thing, created_at) VALUES (%s, %s, %s, %s, %s)",
+                    (dreams, thoughts, positive, one_thing, datetime.now()))
         self.conn.commit()
         cur.close()
 
@@ -80,17 +80,15 @@ class JournalEntriesGUI(tk.Frame):
 
     def submit(self):
         # Retrieve values from input boxes
-        title = self.title_box.get()
         dreams = self.dreams_box.get("1.0", tk.END)
         thoughts = self.thoughts_box.get("1.0", tk.END)
         positive = self.positive_box.get("1.0", tk.END)
         one_thing = self.one_thing_box.get("1.0", tk.END)
 
         # Insert entry into database
-        self.db.insert_entry(title, dreams, thoughts, positive, one_thing)
+        self.db.insert_entry(dreams, thoughts, positive, one_thing)
 
         # Clear input boxes
-        self.title_box.delete(0, tk.END)
         self.dreams_box.delete("1.0", tk.END)
         self.thoughts_box.delete("1.0", tk.END)
         self.positive_box.delete("1.0", tk.END)
