@@ -7,7 +7,7 @@ class JournalDatabase:
     def __init__(self):
         self.conn = psycopg2.connect(database="journal_entries",
                                      user="postgres",
-                                     password="yourpassword")
+                                     password="password")
 
     def insert_entry(self, dreams, thoughts, positive, one_thing):
         cur = self.conn.cursor()
@@ -33,6 +33,12 @@ class JournalEntriesGUI(tk.Frame):
         self.db = JournalDatabase()
 
     def create_widgets(self):
+
+        def move_to_next_entry(event):
+            widget = event.widget
+            widget.tk_focusNext().focus()
+            return "break"
+    
         # Create labels and input boxes for the entry form
 
         dreams_label = tk.Label(self, text="Dreams:")
@@ -77,6 +83,12 @@ class JournalEntriesGUI(tk.Frame):
         end_date_label.grid(row=6, column=1)
         self.end_date_box = tk.Text(self, height=1, width=10)
         self.end_date_box.grid(row=7, column=1)
+
+        #allow tab key functionality
+        self.dreams_box.bind("<Tab>", move_to_next_entry)
+        self.thoughts_box.bind("<Tab>", move_to_next_entry)
+        self.positive_box.bind("<Tab>", move_to_next_entry)
+
 
     def submit(self):
         # Retrieve values from input boxes
