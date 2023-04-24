@@ -11,3 +11,4 @@ postgres helped me locate it, and then I edited the local host setting from "pee
 - Chat GPT recommended splitting the GUI class into two separate classes, one class for GUI and one class for interacting with the database.
 - Originally tried a treewindow view for the retrieve entries function to keep everything in one window, but it ended up being too crowded, so I changed the retrieve function to create a new window instead. Also added text wrapping for better readability.
 - I want to add a feature where I can move to the next text box by pushing Tab, which I should be able to do with the bind method in tkinter.
+- installing on new machine, was having trouble installing psycopg2, realized I needed to run this command first "sudo yum install python3-devel postgresql-devel"
