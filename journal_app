@@ -6,7 +6,7 @@ from tkinter import ttk
 class JournalDatabase:
     def __init__(self):
         self.conn = psycopg2.connect(database="journal_entries",
-                                     user="postgres",
+                                     user="gam32bit",
                                      password="password")
 
     def insert_entry(self, dreams, thoughts, positive, one_thing):
@@ -122,11 +122,11 @@ class JournalEntriesGUI(tk.Frame):
 
         # Add each row to the Text widget
         for row in rows:
-            entries_text.insert(tk.END, f"Date: {row[1]}\n")
-            entries_text.insert(tk.END, f"Dreams: {row[2]}\n")
-            entries_text.insert(tk.END, f"Thoughts: {row[3]}\n")
-            entries_text.insert(tk.END, f"Positive Affirmation: {row[4]}\n")
-            entries_text.insert(tk.END, f"One thing to get done: {row[5]}\n\n")
+            entries_text.insert(tk.END, f"Dreams: {row[1]}\n")
+            entries_text.insert(tk.END, f"Thoughts: {row[2]}\n")
+            entries_text.insert(tk.END, f"Positive Affirmation: {row[3]}\n")
+            entries_text.insert(tk.END, f"One thing to get done: {row[4]}\n")
+            entries_text.insert(tk.END, f"Date: {row[5]}\n\n")
 
 root = tk.Tk()
 app = JournalEntriesGUI(master=root)

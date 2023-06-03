@@ -1,4 +1,8 @@
-PyQt5-5.15.9 
-python3-tkinter-3.11.2
-psycopg2-binary-2.9.5
-datetime-5.1
+DateTime==5.1
+psycopg2-binary==2.9.6
+PyQt5==5.15.9
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.12.1
+pytz==2023.3
+tk==0.1.0
+zope.interface==6.0
