@@ -88,6 +88,7 @@ class JournalEntriesGUI(tk.Frame):
         self.dreams_box.bind("<Tab>", move_to_next_entry)
         self.thoughts_box.bind("<Tab>", move_to_next_entry)
         self.positive_box.bind("<Tab>", move_to_next_entry)
+        self.start_date_box.bind("<Tab>", move_to_next_entry)
 
 
     def submit(self):
